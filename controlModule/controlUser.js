@@ -20,7 +20,7 @@ exports.save = function (req, res){
   User.save(newUser, (err, doc)=>{
 	if(err) {
 	  console.log(err)
-	  res.sendStatus(500)
+	  res.send(err.message)
 	}
 	res.send(doc)
   })
@@ -42,7 +42,7 @@ exports.findOneAndUpdate = function (req, res) {
 
 exports.findOneAndDelete = function (req, res) {
   let id = req.params.id;
-  
+
   User.findOneAndDelete(id, (err, doc)=>{
   	if(err) {
       console.log(err);
