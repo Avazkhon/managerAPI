@@ -11,6 +11,12 @@ exports.find = function (colBack) {
   })
 }
 
+exports.findId = function (id, colBack) {
+  UserObj.find({_id: id}, (err, doc)=>{
+  colBack(err, doc)
+  })
+}
+
 exports.save = function (newUser, colBack) {
   let userObj = new UserObj(newUser);
   userObj.save((err, doc)=>{

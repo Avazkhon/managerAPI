@@ -11,6 +11,18 @@ exports.find = function (req, res) {
   })
 }
 
+exports.findId = function (req, res) {
+  let id = req.params.id;
+  User.findId(id, (err, doc)=>{
+    if (err) {
+      console.log(err);
+      res.sendStatus(500);
+      return
+    }
+    res.send(doc)
+  })
+}
+
 exports.save = function (req, res){
   let newUser = req.body; 
   if(!newUser){

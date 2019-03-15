@@ -19,6 +19,7 @@ app.get('/', (req, res)=>{
 });
 
 app.get('/userGet', User.find)
+app.get('/userGet/:id', User.findId)
 app.post('/userNew', User.save)
 app.put('/userUpdate/:id', User.findOneAndUpdate)
 app.delete('/userDelete/:id', User.findOneAndDelete)
