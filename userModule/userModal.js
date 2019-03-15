@@ -11,8 +11,22 @@ let UserSchema = new Schema({
   	phone: {type: Number, required: true}
   },
   creditBalans: {
-  	type:Number,
+  	type: Number,
   	default: 100
+  },
+  statusUser: {
+    admin: {
+      type: Boolean,
+      default: true
+    },
+    emailConfirmation: {
+      type: Boolean,
+      default: false
+    }
+  },
+  security: {
+    nickName: {type: String, required: true},
+    password: {type: String, required: true}
   },
   age: {type: Number, required: true}
 

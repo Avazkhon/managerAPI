@@ -26,7 +26,8 @@ exports.findId = function (req, res) {
 exports.save = function (req, res){
   let newUser = req.body; 
   if(!newUser){
-	res.sendStatus(400)
+	 res.sendStatus(400)
+   return
   }
 
   User.save(newUser, (err, doc)=>{
