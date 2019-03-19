@@ -34,6 +34,7 @@ exports.save = function (req, res){
 	if(err) {
 	  console.log(err)
 	  res.send(err.message)
+    return
 	}
 	res.send(doc)
   })
