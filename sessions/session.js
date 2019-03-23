@@ -15,6 +15,10 @@ exports.cookie = function (req, res) {
   });
 
   function status (person) {
+  	if(person === null){
+  	  res.sendStatus(400)
+  	  return
+  	}
   	if(person.security.password == req.body.password) {
 	  if(!req.headers.cookie) {
 	  	res.cookie('statusUser', 123, { maxAge: 900000, httpOnly: true });
@@ -22,6 +26,8 @@ exports.cookie = function (req, res) {
 	  	return
 	  };
 	  res.send(person);
+	  return
   	};
+  	  res.sendStatus(400)
   };
 };
