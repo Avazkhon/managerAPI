@@ -17,6 +17,12 @@ exports.findId = function (id, colBack) {
   })
 }
 
+exports.criteriondUser = function (criteriondUser, colBack) {
+  UserObj.findOne({ "contact.email": criteriondUser }, (err, person)=>{
+  colBack(err, person)
+  })
+}
+
 exports.save = function (newUser, colBack) {
   let userObj = new UserObj(newUser);
   userObj.save((err, doc)=>{
