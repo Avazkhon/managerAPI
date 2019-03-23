@@ -22,12 +22,6 @@ const Sessions = require ('./sessions/session')
 
 app.post('/userStatus', Sessions.cookie)
 
-// app.get('/', (req, res)=>{
-//   console.log(req.headers.cookie)
-//   res.cookie('statusUser', 123, { maxAge: 900000, httpOnly: true });
-//   res.send('Hello, i ma Manager!');
-// });
-
 app.get('/userGet', User.find)
 app.get('/userGet/:id', User.findId)
 app.post('/userNew', User.save)

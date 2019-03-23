@@ -1,18 +1,23 @@
 const mongoose = require('mongoose');
+
+// this app module
+const KeyCookie = require('./keyCookie')
+
+const keyCookie = new KeyCookie();
 let Schema = mongoose.Schema;
 
 let UserSchema = new Schema({
   name: {
-  	firstName: {type: String, required: true},
-  	lastName: {type: String, required: true}
+    firstName: {type: String, required: true},
+    lastName: {type: String, required: true}
   },
   contact: {
-  	email: {type: String, required: true},
-  	phone: {type: Number, required: true}
+    email: { type : String , createIndexes : true, required : true, dropDups: true },
+    phone: { type : Number , createIndexes : true, required : true, dropDups: true }
   },
   creditBalans: {
-  	type: Number,
-  	default: 100
+    type: Number,
+    default: 100
   },
   statusUser: {
     admin: {
@@ -25,9 +30,9 @@ let UserSchema = new Schema({
     }
   },
   security: {
-    nickName: {type: String, required: true},
-    password: {type: String, required: true}
-  }
+    password: {type: String, required: true},
+    keyCookie: {type : String , createIndexes : true, required : true, dropDups: true, default: KeyCookie()}
+  },
 
 }, {collection: "users "});
 

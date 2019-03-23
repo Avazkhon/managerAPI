@@ -21,7 +21,7 @@ exports.cookie = function (req, res) {
   	}
   	if(person.security.password == req.body.password) {
 	  if(!req.headers.cookie) {
-	  	res.cookie('statusUser', 123, { maxAge: 900000, httpOnly: true });
+	  	res.cookie('statusUser', person.security.keyCookie, { maxAge: 900000, httpOnly: true });
 	  	res.send(person);
 	  	return
 	  };
