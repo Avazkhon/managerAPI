@@ -3,8 +3,15 @@ const mongoose = require('mongoose');
 // this app module
 const KeyCookie = require('./keyCookie')
 
+
 const keyCookie = new KeyCookie();
-let Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', () => {
+  console.log('connected');
+});
 
 let UserSchema = new Schema({
   name: {
@@ -34,8 +41,10 @@ let UserSchema = new Schema({
     keyCookie: {type : String , createIndexes : true, required : true, dropDups: true, default: KeyCookie()}
   },
 
-}, {collection: "users "});
+}, {collection: "users"});
 
-let UserObj = mongoose.model("UserObj", UserSchema);
+const userDB = mongoose.connection.useDb('userDB');
+
+let UserObj = userDB.model("UserObj", UserSchema);
 
 module.exports = UserObj;
