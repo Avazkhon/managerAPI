@@ -16,16 +16,16 @@ let CompanySchema = new Schema ({
     shortName: {type: String, required: true},
   },
   stateRegister: {
-  	INN: { type : Number , createIndexes : true, required : true, dropDups: true },
-  	ORGN: { type : Number , createIndexes : true, required : true, dropDups: true }
+  	INN: { type : Number , required : true, trim: true, createIndexes: true, unique: true },
+  	ORGN: { type : Number , required : true, time: true, createIndexes: true, unique: true }
   },
   address: {
   	sity: {type: String, required: true},
   	street: {type: String, required: true}
   },
   contact: {
-    email: { type : String , createIndexes : true, required : true, dropDups: true },
-    phone: { type : Number , createIndexes : true, required : true, dropDups: true }
+    email: { type : String , required : true, trim: true, createIndexes: true, unique: true},
+    phone: { type : Number , required : true, trim: true, createIndexes: true, unique: true}
   },
 
 }, {collection: "company"});

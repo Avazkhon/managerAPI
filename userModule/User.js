@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 // module this api
 const UserObj = require('./userModal');
 
-mongoose.connect(' mongodb://127.0.0.1:27017/userDB', { useNewUrlParser: true });
+// mongoose.connect(' mongodb://127.0.0.1:27017/userDB', { useNewUrlParser: true });
 
 exports.find = function (colBack) {
   UserObj.find((err, doc)=>{
