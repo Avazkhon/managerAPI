@@ -1,4 +1,7 @@
-const Company = require('../companyModule/Company')
+const Company = require('../companyModule/Company');
+const MessageGood = require('../messageModule/MessageGood');
+
+const messageGood = new MessageGood()
 
 exports.find = function (req, res) {
   Company.find((err, doc)=>{
@@ -37,7 +40,7 @@ exports.save = function (req, res){
 	  res.send(err.message)
     return
 	}
-	res.send(doc)
+	res.send(messageGood.mesCraeteCompany())
   })
 }
 
