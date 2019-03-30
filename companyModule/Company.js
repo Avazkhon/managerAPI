@@ -3,8 +3,6 @@ const mongoose = require('mongoose');
 // module this api
 const CompanyObj = require('./companyModal');
 
-// mongoose.connect(' mongodb://127.0.0.1:27017/companyDB', { useNewUrlParser: true });
-
 exports.find = function (colBack) {
   CompanyObj.find((err, doc)=>{
   colBack(err, doc)
@@ -16,4 +14,10 @@ exports.save = function (newCompany, colBack) {
   companyObj.save((err, doc)=>{
     colBack(err, doc)
   })
+}
+
+exports.findOneAndUpdate = function (id, update, colBack) {
+	CompanyObj.findOneAndUpdate({_id: id}, update, {"new": true}, (err, doc)=>{
+		colBack(err, doc)
+	})
 }

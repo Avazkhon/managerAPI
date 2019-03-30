@@ -10,6 +10,8 @@ exports.find = function (req, res) {
   	res.send(doc)
   })
 }
+
+
 exports.save = function (req, res){
   let newCompany = req.body; 
   if(!newCompany){
@@ -24,5 +26,23 @@ exports.save = function (req, res){
     return
 	}
 	res.send(doc)
+  })
+}
+
+exports.findOneAndUpdate = function (req, res){
+  let id = req.params.id;
+  let update = req.body; 
+  if(!update){
+   res.sendStatus(400)
+   return
+  }
+
+  Company.findOneAndUpdate (id, update, (err, doc)=>{
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+      return
+    }
+    res.sendStatus(202)
   })
 }
