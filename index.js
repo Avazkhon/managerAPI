@@ -32,6 +32,7 @@ app.delete('/userDelete/:id', User.findOneAndDelete);
 app.get('/companyGet', Company.find);
 app.post('/companyNew', Company.save);
 app.put('/companyUpdate/:id', Company.findOneAndUpdate);
+app.delete('/companyDelete/:id', Company.findOneAndDelete);
 
 
 app.listen(port, ()=>{

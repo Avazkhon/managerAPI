@@ -17,7 +17,13 @@ exports.save = function (newCompany, colBack) {
 }
 
 exports.findOneAndUpdate = function (id, update, colBack) {
-	CompanyObj.findOneAndUpdate({_id: id}, update, {"new": true}, (err, doc)=>{
-		colBack(err, doc)
-	})
+  CompanyObj.findOneAndUpdate({_id: id}, update, {"new": true}, (err, doc)=>{
+    colBack(err, doc)
+  })
+}
+
+exports.findOneAndDelete = function (id, colBack) {
+  CompanyObj.findOneAndDelete ({_id: id}, (err, result)=>{
+    colBack(err, result);
+  })
 }

@@ -13,7 +13,7 @@ exports.find = function (req, res) {
 
 
 exports.save = function (req, res){
-  let newCompany = req.body; 
+  const newCompany = req.body; 
   if(!newCompany){
 	 res.sendStatus(400)
    return
@@ -29,8 +29,9 @@ exports.save = function (req, res){
   })
 }
 
+
 exports.findOneAndUpdate = function (req, res){
-  let id = req.params.id;
+  const id = req.params.id;
   let update = req.body; 
   if(!update){
    res.sendStatus(400)
@@ -42,7 +43,21 @@ exports.findOneAndUpdate = function (req, res){
       console.log(err);
       res.sendStatus(500);
       return
-    }
+    };
     res.sendStatus(202)
+  })
+}
+
+
+exports.findOneAndDelete = function (req, res){
+  const id = req.params.id;
+
+  Company.findOneAndDelete(id, (err, result)=>{
+    if(err) {
+      console.log(err);
+      res.sendStatus(500);
+      return
+    };
+      res.sendStatus(200)
   })
 }
