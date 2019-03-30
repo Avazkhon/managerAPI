@@ -27,6 +27,42 @@ let CompanySchema = new Schema ({
     email: { type : String , required : true, trim: true, createIndexes: true, unique: true},
     phone: { type : Number , required : true, trim: true, createIndexes: true, unique: true}
   },
+  defaultInfo: {
+    createDate: {
+      type: Date,
+      default: new Date
+    },
+    statusActive: {
+      type: Boolean,
+      default: true
+    }
+  },
+  companyLevel: {
+    lavel: {type: String, default: "small" },
+    statutoryCapital: {type: Number, min: 10000, default : 10000},
+    staffSize: {type: String, default: 1}
+  },
+  fieldОfActivity: {
+    main:{
+      type: Array, 
+    },
+    all: {
+      type: Array
+    }
+  },
+  creditBalans: {
+    balans: {
+      typeСurrency: {
+        type: String,
+        default: "RUB"
+      },
+      count: {type: Number, default: 100}
+    },
+    rate: {
+      type: String,
+      default: "base"
+    }
+  },
 
 }, {collection: "company"});
 
