@@ -9,6 +9,13 @@ exports.find = function (colBack) {
   })
 }
 
+exports.findID = function (id, colBack) {
+  CompanyObj.find({_id: id},(err, doc)=>{
+  colBack(err, doc)
+  })
+}
+
+
 exports.save = function (newCompany, colBack) {
   let companyObj = new CompanyObj(newCompany);
   companyObj.save((err, doc)=>{

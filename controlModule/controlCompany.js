@@ -11,6 +11,18 @@ exports.find = function (req, res) {
   })
 }
 
+exports.findID = function (req, res){
+  const id = req.params.id;
+  Company.findID (id, (err, doc)=>{
+    if(err) {
+      console.log(err)
+      res.send(err.message)
+      return
+    };
+    res.send(doc)
+  })
+}
+
 
 exports.save = function (req, res){
   const newCompany = req.body; 

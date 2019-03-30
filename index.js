@@ -30,6 +30,7 @@ app.put('/userUpdate/:id', User.findOneAndUpdate);
 app.delete('/userDelete/:id', User.findOneAndDelete);
 
 app.get('/companyGet', Company.find);
+app.get('/companyGet/:id', Company.findID);
 app.post('/companyNew', Company.save);
 app.put('/companyUpdate/:id', Company.findOneAndUpdate);
 app.delete('/companyDelete/:id', Company.findOneAndDelete);
