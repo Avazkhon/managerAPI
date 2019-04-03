@@ -21,9 +21,9 @@ const User = require ("./controlModule/controlUser");
 const Company = require ("./controlModule/controlCompany");
 const Sessions = require ('./sessions/session');
 
-app.post('/userStatus', Sessions.cookie);
+app.post('/userStatus', Sessions.newCookie);
 
-app.get('/userGet', User.find);
+app.get('/userGet', Sessions.cookie, User.find);
 app.get('/userGet/:id', User.findId);
 app.post('/userNew', User.save);
 app.put('/userUpdate/:id', User.findOneAndUpdate);

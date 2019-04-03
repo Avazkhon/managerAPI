@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 // module this api
 const UserObj = require('./userModal');
 
-// mongoose.connect(' mongodb://127.0.0.1:27017/userDB', { useNewUrlParser: true });
 
 exports.find = function (colBack) {
   UserObj.find((err, doc)=>{
@@ -17,11 +16,19 @@ exports.findId = function (id, colBack) {
   })
 }
 
-exports.criteriondUser = function (criteriondUser, colBack) {
-  UserObj.findOne({ "contact.email": criteriondUser }, (err, person)=>{
+exports.criteriondUserEmail = function (email, colBack) {
+  UserObj.findOne({ email: email }, (err, person)=>{
   colBack(err, person)
   })
 }
+
+
+exports.criteriondCookue = function (cookie, colBack) {
+  UserObj.findOne({ 'security.keyCookie': cookie }, (err, person)=>{
+  colBack(err, person)
+  })
+}
+
 
 exports.save = function (newUser, colBack) {
   let userObj = new UserObj(newUser);
