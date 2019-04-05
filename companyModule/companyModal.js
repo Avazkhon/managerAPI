@@ -35,6 +35,9 @@ let CompanySchema = new Schema ({
     statusActive: {
       type: Boolean,
       default: true
+    },
+    nameDateBase: {
+      type: String
     }
   },
   companyLevel: {

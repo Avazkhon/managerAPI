@@ -24,10 +24,10 @@ const Sessions = require ('./sessions/session');
 app.post('/userStatus', Sessions.newCookie);
 
 app.get('/userGet', Sessions.cookie, User.find);
-app.get('/userGet/:id', User.findId);
+app.get('/userGet/:id', Sessions.cookie, User.findId);
 app.post('/userNew', User.save);
-app.put('/userUpdate/:id', User.findOneAndUpdate);
-app.delete('/userDelete/:id', User.findOneAndDelete);
+app.put('/userUpdate/:id', Sessions.cookie, User.findOneAndUpdate);
+app.delete('/userDelete/:id', Sessions.cookie, User.findOneAndDelete);
 
 app.get('/companyGet', Company.find);
 app.get('/companyGet/:id', Company.findID);

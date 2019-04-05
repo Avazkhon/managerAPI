@@ -20,6 +20,16 @@ let UserSchema = new Schema({
     email: { type : String, required : true, trim: true, createIndexes: true, unique: true },
     phone: { type : Number, required : true, trim: true, createIndexes: true, unique: true }
   },
+  defaultInfo: {
+    createDate: {
+      type: Date,
+      default: new Date
+    },
+    statusActive: {
+      type: Boolean,
+      default: true
+    }
+  },
   creditBalans: {
     type: Number,
     default: 100
